@@ -1,0 +1,31 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: CloudFormation template for creating workshop resources.
+Resources:
+    ddbtable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            AttributeDefinitions:
+            -
+                AttributeName: "ROWID"
+                AttributeType: "N"
+            KeySchema:
+            -
+                AttributeName: "ROWID"
+                KeyType: "HASH"
+            ProvisionedThroughput:
+                ReadCapacityUnits: "20"
+                WriteCapacityUnits: "20"
+    Bucket:
+        Type: AWS::S3::Bucket
+        Properties:
+             AccessControl: BucketOwnerFullControl
+Outputs:
+  S3Bucket:
+    Description: S3 bucket for the workshop
+    Value: !Ref Bucket
+  DynamoDBTable:
+    Description: DynamoDB table created for the workshop
+    Value: !Ref ddbtable
+
+
