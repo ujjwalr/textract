@@ -1,6 +1,6 @@
 ---
 AWSTemplateFormatVersion: 2010-09-09
-Description: CloudFormation template for creating workshop resources.
+Description: CloudFormation template for creating an s3 bucket and a dynamo db table that the code uses.
 Resources:
     ddbtable:
         Type: AWS::DynamoDB::Table
