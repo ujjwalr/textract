@@ -20,7 +20,7 @@ cm  = boto3.client(service_name='comprehendmedical', use_ssl=True, region_name =
 table = dynamoDBResource.Table(ddb_table)
 
                           
-list=s3.list_objects(Bucket=bucket, Prefix='textract/images')['Contents']
+list=s3.list_objects(Bucket=bucket, Prefix='/images')['Contents']
 
 for s3_key in list[1:]:
     s3_object = s3_key['Key']
