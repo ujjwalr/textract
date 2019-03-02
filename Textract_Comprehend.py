@@ -8,9 +8,9 @@ stack_name = str(sys.argv[1])
 cfn = boto3.client('cloudformation')
 s3 = boto3.client('s3')
 textract = boto3.client('textract',region_name='us-east-2') #account whitelisted for only one region so overriding the default region here.
-dynamoDBResource = boto3.resource('dynamodb', region_name = 'us-east-1')
+dynamoDBResource = boto3.resource('dynamodb')
 
-#replace StackName with corresponding cloudformation stack name
+
 bucket = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][0]['OutputValue']
 ddb_table = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][1]['OutputValue']
 
@@ -22,7 +22,7 @@ table = dynamoDBResource.Table(ddb_table)
                           
 list=s3.list_objects(Bucket=bucket, Prefix='images')['Contents']
 
-for s3_key in list[1:]:
+for s3_key in list[0:]:
     s3_object = s3_key['Key']
     
     print ('extracting text from the image: '+ s3_object + '...')
@@ -40,7 +40,7 @@ for s3_key in list[1:]:
     
     Trait_List = []
     Attribute_List = []
-    testresult = hera.detect_entities(Text = textract_output)
+    testresult = cm.detect_entities(Text = textract_output)
     testentities = testresult['Entities']
     rowid = 1
     #print(testentities)
