@@ -22,7 +22,7 @@ bucket = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][0]['O
 table = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][1]['OutputValue']
 
 
-s3.meta.client.upload_file(Filename = 'images/textract1.jpg', Bucket = bucket, Key = '/images/textract1.jpg')
+s3.meta.client.upload_file(Filename = 'images/textract1.jpg', Bucket = bucket, Key = 'images/textract1.jpg')
 
 
 print ('Stack '+stack_name+'created.')
