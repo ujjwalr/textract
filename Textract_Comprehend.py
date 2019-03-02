@@ -2,14 +2,21 @@
 import boto3
 import os
 from decimal import *
+import sys
+stack_name = str(sys.argv[1])
 
-bucket='healthai'
-ddb_table = 'CompMedDemo-ddbtable-1R0JWXLE0PRL'
-
+cfn = boto3.client('cloudformation')
 s3 = boto3.client('s3')
-textract = boto3.client('textract',region_name='us-east-2')
-hera  = boto3.client(service_name='comprehendmedical', use_ssl=True, region_name = 'us-east-2')
+textract = boto3.client('textract',region_name='us-east-2') #account whitelisted for only one region so overriding the default region here.
 dynamoDBResource = boto3.resource('dynamodb', region_name = 'us-east-1')
+
+#replace StackName with corresponding cloudformation stack name
+bucket = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][0]['OutputValue']
+ddb_table = cfn.describe_stacks(StackName=stack_name)['Stacks'][0]['Outputs'][1]['OutputValue']
+
+
+
+cm  = boto3.client(service_name='comprehendmedical', use_ssl=True, region_name = 'us-east-2')
 table = dynamoDBResource.Table(ddb_table)
 
                           
