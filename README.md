@@ -5,3 +5,6 @@ NOTE: Before running make sure you have AWS CLI installed and configured with ap
 * download the repository to a folder.
 * run setup.py using $ python setup.py stack_name (stack name is the name of the cloudformation stack)
 * run Textract_Comprehend.py using $ python Textract_Comprehend.py stack_name (stack name is the name of the cloudformation stack. Make sure its the same name as provided in the setup script.)
+
+
+Once Executed, you will be able to see the extracted data in DynamoDB table.
