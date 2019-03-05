@@ -4,7 +4,7 @@ code to extract text using Amazon Textract and detect entities using Amazon Comp
 NOTE: Before running make sure you have AWS CLI installed and configured with appropriate IAM privilages. Look at the following link that explains how to install and configure the AWS CLI:
 https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 
-\textbf {The default region for the CLI should be configured to the region where textract service is available.}
+The default region for the CLI should be configured to the region where textract service is available.
 
 * download the repository to a folder.
 * run setup.py using python setup.py stack_name (stack name is the name of the cloudformation stack). 
