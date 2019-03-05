@@ -1,5 +1,5 @@
 # textract
-code to extract text using Amazon Textract and detect entities using Amazon Comprehend Medical. The detected entities are stored into a DynamoDB table.
+code to extract text using Amazon Textract and detect entities using Amazon Comprehend Medical. The detected entities are stored into a DynamoDB table. A sample image is provided in the images/ folder.
 ## Steps
 NOTE: Before running make sure you have AWS CLI installed and configured with appropriate IAM privilages. Look at the following link that explains how to install and configure the AWS CLI:
 https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
